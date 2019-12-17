@@ -1,4 +1,4 @@
-console.log('utlis.js loaded');
+// console.log('utlis.js loaded');
 
 const getNotes = (val) => { 
     return val 
