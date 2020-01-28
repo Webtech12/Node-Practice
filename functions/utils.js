@@ -8,7 +8,19 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes()
+
+    notes.push({
+        title: title,
+        body: body
+    })
     console.log(notes)
+
+    saveNotes(notes)
+}
+
+const saveNotes = (notes) => {
+    const dataJSON = JSON.stringify(notes)
+    fs.writeFileSync('notes.json', dataJSON)
 }
 
 const loadNotes = () => {
