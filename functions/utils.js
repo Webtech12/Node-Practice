@@ -1,7 +1,29 @@
-// console.log('utlis.js loaded');
+const fs = require('fs')
 
-const getNotes = (val) => { 
-    return val 
+
+// helper functions
+const getNotes = () => { 
+    return "Your notes..." 
 }
 
-module.exports = getNotes
+const addNote = (title, body) => {
+    const notes = loadNotes()
+    console.log(notes)
+}
+
+const loadNotes = () => {
+    try {
+        const dataBuffer = fs.readFileSync('notes.json')
+        const dataJson = JSON.parse(dataBuffer)
+        return dataJson
+    } catch (e) {
+        return []
+    }
+}
+
+
+// exporting multiple functions
+module.exports = {
+    getNotes: getNotes,
+    addNote: addNote
+}

@@ -1,8 +1,8 @@
 const validator = require('validator')
 const yargs = require('yargs')
-const getNotes = require('./functions/utils.js')
+const Notes = require('./functions/utils.js')
 
-let val = getNotes('Your notes...')
+// let val = getNotes('Your notes...')
 
 // commands to run
 // add command 
@@ -22,7 +22,8 @@ yargs.command({
         }
     },
     handler: (argv) => {
-        console.log(`adding new note title: ${argv.title} & new note body: ${argv.body}`)
+        // console.log(`adding new note title: ${argv.title} & new note body: ${argv.body}`)
+        Notes.addNote(argv.title, argv.body)
     }
 })
 //remove command
