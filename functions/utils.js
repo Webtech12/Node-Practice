@@ -8,14 +8,20 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes()
+    const duplicateNotes = notes.filter(function (note) { 
+        return note.title === title
+     })
 
-    notes.push({
-        title: title,
-        body: body
-    })
-    console.log(notes)
-
-    saveNotes(notes)
+     if (duplicateNotes === 0) {
+        notes.push({
+            title: title,
+            body: body
+        })
+        console.log(notes)
+        saveNotes(notes)
+     } else {
+        console.log('Title taken')
+     }    
 }
 
 const saveNotes = (notes) => {
